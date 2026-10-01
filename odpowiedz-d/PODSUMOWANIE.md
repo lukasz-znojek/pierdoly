@@ -9,7 +9,7 @@ Data: 2026-10-01
    - jej quiz odtworzony 1:1: ten sam układ (rozmyte tło, plakat 2:3, neonowe obwódki), te same dwa plakaty pobrane z jej artefaktu (`images/question.png`, `images/prize.png`), te same klikalne pigułki A/B/C,
    - kliknięcie dowolnej odpowiedzi pokazuje jej nagrodę "Wygrałeś! Wycieczkę do Sosnowca" dokładnie jak u niej,
    - dopiero wtedy wchodzi awatar (klip z Higgsfield) i podważa nagrodę: czerwony X markerem przez "SOSNOWCA", pieczątka "Nagroda nieprawidłowa", a na jej karcie skreślenia i dopiski: termin "wczoraj" na "na osobności", osoba towarzysząca "Ty i twoje osobowości" na "tylko ja 😏", koszt "0 zł" na "w naturze",
-   - dymki: "Pomogę. Oczywiście, że pomogę. Ale nagroda… nie." / "Sosnowiec to nie jest waluta. Poprawiam." / "Rozliczymy się w naturze. Szczegóły na osobności. Ciastko to tylko zaliczka. 😏",
+   - dymki: "Pomogę. Oczywiście, że pomogę. Ale nagroda… nie." / "Sosnowiec to nie jest waluta. Poprawiam." / "Rozliczymy się w naturze. Szczegóły na osobności. 😏",
    - pieczątka "Umowa stoi?" i przycisk "Przyjmuję warunki" (po kliknięciu "Umowa stoi" i "Masz to na piśmie. Ja też. Termin odbioru podam osobiście."), przycisk "Od nowa",
    - na szerokich ekranach postać stoi obok plakatu, na telefonie siedzi w jego lewym dolnym rogu,
    - źródło: `odpowiedz-d/index.html`; kopie jej plakatów w `odpowiedz-d/images/`.

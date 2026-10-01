@@ -207,7 +207,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     if(won)return;won=true;
     stage.classList.add('won');bd.style.backgroundImage='url('+p.getAttribute('src')+')';
     // Then the negotiator walks in and disputes the prize.
-    at(1200,function(){cameo.classList.add('on');play();klip.loop=true});
+    at(1200,function(){cameo.classList.add('on');klip.loop=false;play()});
     at(1800,function(){say('Żartowałam z tym Sosnowcem. Wycieczka będzie, ale <em>do mnie</em>.')});
     at(3200,function(){on('xs')});
     at(3900,function(){on('st1')});

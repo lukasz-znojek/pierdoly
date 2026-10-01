@@ -4,24 +4,15 @@ Data: 2026-10-01
 
 ## Co powstało
 
-1. **Artefakt-parodia ankiety** (strona do wysłania linkiem):
+1. **Artefakt na jej szkielecie** (wersja 3, link bez zmian):
    https://claude.ai/artifact/RGy4oAaxw6AY41cgrgmzoi
-   - odtwarza quiz koleżanki ("Która z odpowiedzi jest poprawna? ↪️", A: Tak, B: Tak, C: Wszystkie powyższe, nagroda: wycieczka do Sosnowca),
-   - przycisk "Sprawdź moją odpowiedź" skreśla markerem A, B, C i dopisuje "D: Tak… ale za coś",
-   - nagroda zostaje skreślona: "Sosnowiec zostaw sobie. Zapłata: w naturze.",
-   - dymki postaci: "Pomogę. Oczywiście, że pomogę." / "Ale Sosnowiec to nie jest waluta." / "Rozliczymy się w naturze." / "Szczegóły ustalimy na osobności. Ciastko to tylko zaliczka. 😏",
-   - przycisk "Przyjmuję warunki" stawia pieczątkę "Umowa stoi" i linijkę "Masz to na piśmie. Ja też. Termin odbioru podam osobiście.",
-   - źródło: `odpowiedz-d/index.html` w tym repozytorium.
-
-2. **Postać w Higgsfield** (styl anime wzorowany na przesłanym awatarze: twin-taile z czarnymi kokardami, czerwone oczy, gotycka sukienka z białymi falbanami):
-   - wersja 1 (Z Image, platynowe włosy): job `3ea5945a-b81b-4935-824b-216303354654`
-   - wersja 2 po Twoich poprawkach z widżetu (Nano Banana, złote włosy, większy dekolt): job `c6158095-2f3c-486e-bd0c-fc93f530dba1`
-
-3. **Klipy wideo** (Wan 3.0, 4 s, 480p, bez dźwięku, 9:16; gest: odkręca marker, rysuje X w powietrzu, uśmiech półgębkiem, palec na ustach, mrugnięcie):
-   - klip 1 z wersji 1 postaci: job `c84033f3-7dea-4472-bd01-aa2152a6e060`
-   - klip 2 z wersji 2 postaci (złote włosy): job `c4d40c70-de96-4777-afd1-991b8663f9bf`
-
-Wszystkie wyniki są w Twojej galerii Higgsfield (konto free, bez projektu, bo utworzenie projektu zostało zablokowane przez klasyfikator sesji).
+   - jej quiz odtworzony 1:1: ten sam układ (rozmyte tło, plakat 2:3, neonowe obwódki), te same dwa plakaty pobrane z jej artefaktu (`images/question.png`, `images/prize.png`), te same klikalne pigułki A/B/C,
+   - kliknięcie dowolnej odpowiedzi pokazuje jej nagrodę "Wygrałeś! Wycieczkę do Sosnowca" dokładnie jak u niej,
+   - dopiero wtedy wchodzi awatar (klip z Higgsfield) i podważa nagrodę: czerwony X markerem przez "SOSNOWCA", pieczątka "Nagroda nieprawidłowa", a na jej karcie skreślenia i dopiski: termin "wczoraj" na "na osobności", osoba towarzysząca "Ty i twoje osobowości" na "tylko ja 😏", koszt "0 zł" na "w naturze",
+   - dymki: "Pomogę. Oczywiście, że pomogę. Ale nagroda… nie." / "Sosnowiec to nie jest waluta. Poprawiam." / "Rozliczymy się w naturze. Szczegóły na osobności. Ciastko to tylko zaliczka. 😏",
+   - pieczątka "Umowa stoi?" i przycisk "Przyjmuję warunki" (po kliknięciu "Umowa stoi" i "Masz to na piśmie. Ja też. Termin odbioru podam osobiście."), przycisk "Od nowa",
+   - na szerokich ekranach postać stoi obok plakatu, na telefonie siedzi w jego lewym dolnym rogu,
+   - źródło: `odpowiedz-d/index.html`; kopie jej plakatów w `odpowiedz-d/images/`.
 
 ## Koszty
 

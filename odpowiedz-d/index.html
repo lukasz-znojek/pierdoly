@@ -80,9 +80,6 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
 .gate p{margin:0 0 2.6cqw;font-family:var(--font-ui);font-size:2.9cqw;line-height:1.35;color:#3a2a30}
 .gate .row{display:flex;gap:1.6cqw;justify-content:center;flex-wrap:wrap}
 .gate .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 .25cqw var(--ink)}
-.zart{position:absolute;right:5%;top:6%;z-index:5;font-family:var(--font-stamp);font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--marker);border:.6cqw double var(--marker);border-radius:1cqw;padding:.8cqw 1.4cqw;font-size:3.6cqw;line-height:1;background:rgba(246,236,216,.9);transform:rotate(14deg);opacity:0;pointer-events:none}
-.zart.on{animation:stampIn .35s cubic-bezier(.2,1.5,.4,1) forwards;animation-name:zartIn}
-@keyframes zartIn{from{opacity:0;transform:rotate(25deg) scale(1.8)}to{opacity:1;transform:rotate(14deg) scale(1)}}
 
 /* ---- ending controls ---- */
 .ui{position:absolute;left:0;right:0;bottom:1%;display:flex;justify-content:center;gap:1.6cqw;z-index:4;opacity:0;pointer-events:none;transition:opacity .4s ease}
@@ -137,7 +134,6 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
         <video id="klip" src="media/klip.mp4" poster="media/postac.png" muted playsinline preload="auto"></video>
         <video id="klip2" src="media/klip2.mp4" poster="media/postac2.png" muted playsinline preload="auto" loop></video>
         <video id="klip3" src="media/klip3.mp4" poster="media/postac3.png" muted playsinline preload="auto" loop></video>
-        <div class="zart" id="zart" aria-hidden="true">Żart</div>
       </div>
       <div class="bubble" id="bubble"></div>
     </div>
@@ -157,6 +153,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     <div class="ui" id="ui">
       <button class="btn" id="accept" type="button">Biorę. Bez Sosnowca</button>
       <button class="btn" id="bonus" type="button" hidden>Bonus</button>
+      <button class="btn ghost" id="replay" type="button" hidden>Od nowa</button>
     </div>
   </div>
 </main>
@@ -201,7 +198,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     ids.forEach(function(id){$(id).classList.remove('on')});
     cameo.classList.remove('on');cameo.classList.remove('alt');bubble.classList.remove('on');ui.classList.remove('on');
     try{klip2.pause();klip2.currentTime=0;klip2.muted=true}catch(e){}
-    st2.innerHTML='Bierzesz?';$('accept').hidden=false;$('bonus').hidden=true;cameo.classList.remove('alt2');$('gate').classList.remove('on');$('zart').classList.remove('on');
+    st2.innerHTML='Bierzesz?';$('accept').hidden=false;$('bonus').hidden=true;$('replay').hidden=true;cameo.classList.remove('alt2');$('gate').classList.remove('on');
     try{klip3.pause();klip3.currentTime=0}catch(e){}
     bd.style.backgroundImage='url('+q.getAttribute('src')+')';
     try{klip.pause();klip.currentTime=0}catch(e){}
@@ -240,13 +237,16 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
   $('gateNo').addEventListener('click',function(){
     $('gate').classList.remove('on');
     $('bonus').hidden=false;
+    $('replay').hidden=false;
   });
+  $('replay').addEventListener('click',reset);
   $('gateYes').addEventListener('click',function(){
     $('gate').classList.remove('on');
     try{klip3.currentTime=0;var r3=klip3.play();if(r3&&r3.catch)r3.catch(function(){})}catch(e){}
     cameo.classList.add('alt2');
     try{klip2.pause()}catch(e){}
-    setTimeout(function(){$('zart').classList.add('on')},reduce?0:900);
+    setTimeout(function(){say('Żart, <em>więcej na żywo</em>…')},reduce?0:900);
+    setTimeout(function(){$('replay').hidden=false},reduce?0:2500);
   });
 
   bd.style.backgroundImage='url('+q.getAttribute('src')+')';

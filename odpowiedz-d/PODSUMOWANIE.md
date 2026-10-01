@@ -8,9 +8,9 @@ Data: 2026-10-01
    https://claude.ai/artifact/RGy4oAaxw6AY41cgrgmzoi
    - jej quiz odtworzony 1:1: ten sam układ (rozmyte tło, plakat 2:3, neonowe obwódki), te same dwa plakaty pobrane z jej artefaktu (`images/question.png`, `images/prize.png`), te same klikalne pigułki A/B/C,
    - kliknięcie dowolnej odpowiedzi pokazuje jej nagrodę "Wygrałeś! Wycieczkę do Sosnowca" dokładnie jak u niej,
-   - dopiero wtedy wchodzi awatar (klip z Higgsfield) i podważa nagrodę: czerwony X markerem przez "SOSNOWCA", pieczątka "Nagroda nieprawidłowa", a na jej karcie skreślenia i dopiski: termin "wczoraj" na "na osobności", osoba towarzysząca "Ty i twoje osobowości" na "tylko ja 😏", koszt "0 zł" na "w naturze",
-   - dymki: "Pomogę. Oczywiście, że pomogę. Ale nagroda… nie." / "Sosnowiec to nie jest waluta. Poprawiam." / "Rozliczymy się w naturze. Szczegóły na osobności. 😏",
-   - pieczątka "Umowa stoi?" i przycisk "Przyjmuję warunki" (po kliknięciu pieczątka zmienia się na "Do rozpatrzenia", a dymek: "Ładnie. Ale to dopiero podanie, nie umowa. Teraz zacznij się starać, a ja popatrzę. 😘"), przycisk "Od nowa",
+   - dopiero wtedy wchodzi awatar, który jest nią: sama wycofuje swoją nagrodę (czerwony X markerem przez "SOSNOWCA", pieczątka "Zmiana nagrody") i poprawia własną kartę: termin "wczoraj" na "na osobności", osoba towarzysząca "Ty i twoje osobowości" na "tylko ja 😏", koszt "0 zł" na "w naturze",
+   - jej dymki: "Sosnowiec? Żartowałam. Prawdziwą nagrodę wręczę osobiście." / "Pomożesz mi, a ja się odwdzięczę. Po swojemu. Poprawiam warunki." / "Odwdzięczę się w naturze, tylko ja i ty. Szczegóły na osobności. 😏",
+   - pieczątka "Umowa stoi?" i przycisk "Potwierdzam ofertę"; po kliknięciu ona mówi "Potwierdzam. I będę się starać. 😘", pieczątka zmienia się na "Do rozpatrzenia", a na plakacie pojawia się Twoja karteczka "Odpowiedź: Zgłoszenie przyjęte. Rozpatrzę po okazaniu starań. 😘"; przycisk "Od nowa",
    - na szerokich ekranach postać stoi obok plakatu, na telefonie siedzi w jego lewym dolnym rogu,
    - źródło: `odpowiedz-d/index.html`; kopie jej plakatów w `odpowiedz-d/images/`.
 

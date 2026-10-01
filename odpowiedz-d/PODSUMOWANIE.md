@@ -32,7 +32,7 @@ Modele GPT Image 2.5, Nano Banana (1), Seedance 2.0 Mini i Seedance 2.5 odmówi�
 
 ## Media w artefakcie
 
-Po odblokowaniu hosta `d8j0ntlcm91z4.cloudfront.net` w ustawieniach sieci środowiska pobrałem klip 2 (mp4, 480x854, 4 s, 3,0 MB) i obraz v2 (png, 768x1376, 1,4 MB) i opublikowałem je przy stronie jako `media/klip.mp4` i `media/postac.png`. Strona odtwarza klip raz i zatrzymuje go na ostatniej klatce (bez dźwięku, bo Wan 3.0 w tej konfiguracji go nie generuje); obraz jest plakatem i awaryjnym zastępnikiem. Kopie plików są w `odpowiedz-d/media/` w repozytorium.
+Po odblokowaniu hosta `d8j0ntlcm91z4.cloudfront.net` w ustawieniach sieci środowiska pobrałem klip 2 (mp4, 480x854, 4 s, 3,0 MB) i obraz v2 (png, 768x1376, 1,4 MB) i opublikowałem je przy stronie jako `media/klip.mp4` i `media/postac.png`. Strona odtwarza klip raz i zatrzymuje go na ostatniej klatce z delikatnym ruchem "oddechu" (powolne przybliżenie w pętli; bez dźwięku, bo Wan 3.0 w tej konfiguracji go nie generuje). Klipy 2 i 3 mają wbudowaną pętlę "do przodu i z powrotem": do pliku doklejona jest odwrócona kopia (po 10 s, dźwięk klipu 2 tylko na odcinku do przodu), bo przeglądarki nie odtwarzają wideo wstecz; obraz jest plakatem i awaryjnym zastępnikiem. Kopie plików są w `odpowiedz-d/media/` w repozytorium.
 
 Obejrzałem obraz i cztery klatki klipu: postać jest dorosłą kobietą w gotyckiej sukience ze złotymi twin-tailami, gest wychodzi w kolejności marker, X w powietrzu, pochylenie z palcem na ustach.
 

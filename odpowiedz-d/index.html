@@ -66,10 +66,6 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
 .cameo #klip2{object-position:center;opacity:0}
 .cameo.alt #klip{opacity:0}
 .cameo.alt #klip2{opacity:1}
-.cameo.on{pointer-events:auto}
-.snd{position:absolute;right:4%;bottom:4%;z-index:4;appearance:none;border:0;cursor:pointer;width:7cqw;height:7cqw;border-radius:50%;background:rgba(7,10,8,.65);color:var(--hot);font-size:3.4cqw;line-height:1;display:none;place-items:center;box-shadow:inset 0 0 0 .2cqw var(--gold);-webkit-tap-highlight-color:transparent}
-.cameo.alt .snd{display:grid}
-.snd:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
 .bubble{position:absolute;left:3%;top:56%;width:50%;z-index:3;background:var(--paper);color:var(--ink);font-family:var(--font-marker);font-size:3cqw;line-height:1.15;padding:1.4cqw 1.8cqw;border-radius:2cqw;border-bottom-left-radius:.4cqw;box-shadow:0 .8cqw 2cqw rgba(0,0,0,.45);opacity:0;transform:translateY(8%);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
 .bubble::after{content:"";position:absolute;left:2cqw;bottom:-1.1cqw;width:2.4cqw;height:2.4cqw;background:var(--paper);transform:skewX(25deg) rotate(-12deg)}
 .bubble.on{opacity:1;transform:none}
@@ -88,7 +84,6 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
   .side{position:absolute;left:calc(100% + 24px);bottom:6%;width:calc(36vh * 9 / 16);width:calc(36dvh * 9 / 16);height:36vh;height:36dvh;z-index:3}
   .side .cameo{position:absolute;inset:0;left:auto;top:auto;width:100%;height:100%;border-radius:18px;border-width:3px;box-shadow:0 18px 44px rgba(0,0,0,.6),0 0 26px var(--glow);transform:translate(10%,24%) rotate(4deg)}
   .side .cameo.on{transform:none}
-  .side .snd{width:36px;height:36px;font-size:18px;right:8px;bottom:8px}
   .side .bubble{left:-6%;top:auto;bottom:calc(100% + 14px);width:118%;font-size:clamp(13px,1.9vh,20px);padding:10px 14px;border-radius:14px;border-bottom-left-radius:4px}
   .side .bubble::after{left:16px;bottom:-8px;width:16px;height:16px;transform:skewX(25deg) rotate(-12deg)}
 }
@@ -129,7 +124,6 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
       <div class="cameo" id="cameo">
         <video id="klip" src="media/klip.mp4" poster="media/postac.png" muted playsinline preload="auto"></video>
         <video id="klip2" src="media/klip2.mp4" muted playsinline preload="auto" loop></video>
-        <button class="snd" id="snd" type="button" aria-label="Włącz dźwięk" aria-pressed="false">🔇</button>
       </div>
       <div class="bubble" id="bubble"></div>
     </div>
@@ -163,7 +157,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
 
 (function(){
   var $=function(id){return document.getElementById(id)};
-  var stage=$('stage'),bd=$('bd'),q=$('q'),p=$('p'),klip=$('klip'),klip2=$('klip2'),cameo=$('cameo'),bubble=$('bubble'),ui=$('ui'),st2=$('st2'),snd=$('snd');
+  var stage=$('stage'),bd=$('bd'),q=$('q'),p=$('p'),klip=$('klip'),klip2=$('klip2'),cameo=$('cameo'),bubble=$('bubble'),ui=$('ui'),st2=$('st2');
   var hasAlt=true;klip2.addEventListener('error',function(){hasAlt=false});
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var timers=[],won=false;
@@ -180,7 +174,6 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     ids.forEach(function(id){$(id).classList.remove('on')});
     cameo.classList.remove('on');cameo.classList.remove('alt');bubble.classList.remove('on');ui.classList.remove('on');$('note').classList.remove('on');
     try{klip2.pause();klip2.currentTime=0;klip2.muted=true}catch(e){}
-    snd.textContent='🔇';snd.setAttribute('aria-pressed','false');snd.setAttribute('aria-label','Włącz dźwięk');
     st2.textContent='Umowa stoi?';$('accept').hidden=false;
     bd.style.backgroundImage='url('+q.getAttribute('src')+')';
     try{klip.pause();klip.currentTime=0}catch(e){}
@@ -207,14 +200,13 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
   ['optA','optB','optC'].forEach(function(id){$(id).addEventListener('click',win)});
   $('accept').addEventListener('click',function(){
     $('accept').hidden=true;
-    if(hasAlt){try{klip2.currentTime=0;var r2=klip2.play();if(r2&&r2.catch)r2.catch(function(){})}catch(e){}cameo.classList.add('alt')}
+    if(hasAlt){try{klip2.currentTime=0;klip2.muted=false;var r2=klip2.play();if(r2&&r2.catch)r2.catch(function(){klip2.muted=true;try{klip2.play().catch(function(){})}catch(e){}})}catch(e){}cameo.classList.add('alt')}
     st2.classList.remove('on');
     setTimeout(function(){st2.textContent='Do rozpatrzenia';st2.classList.add('on')},reduce?0:60);
     say('Potwierdzam. I <em>będę się starać.</em> 😘');
     setTimeout(function(){$('note').classList.add('on')},reduce?0:700);
   });
   $('replay').addEventListener('click',reset);
-  snd.addEventListener('click',function(){klip2.muted=!klip2.muted;snd.textContent=klip2.muted?'🔇':'🔊';snd.setAttribute('aria-pressed',String(!klip2.muted));snd.setAttribute('aria-label',klip2.muted?'Włącz dźwięk':'Wycisz');if(klip2.paused){try{klip2.play().catch(function(){})}catch(e){}}});
 
   bd.style.backgroundImage='url('+q.getAttribute('src')+')';
 })();

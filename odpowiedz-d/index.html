@@ -109,15 +109,15 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
 
     <div class="prize-layer" aria-live="polite">
       <div class="mark x xs" id="xs"><svg class="x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 C 30 40, 60 70, 97 92"/><path d="M97 8 C 70 36, 36 66, 3 90"/></svg></div>
-      <div class="stamp st1" id="st1"><small>Zmiana</small>Nagrody</div>
+      <div class="stamp st1" id="st1"><small>Wycieczka</small>Odwołana</div>
       <div class="mark strike s1" id="s1"><svg class="strike" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M2 58 C 30 44, 70 64, 98 46"/></svg></div>
-      <div class="hand n1" id="n1">na osobności</div>
+      <div class="hand n1" id="n1">dziś, po 22</div>
       <div class="mark strike s2" id="s2"><svg class="strike" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M2 54 C 30 46, 70 62, 98 48"/></svg></div>
-      <div class="hand n2" id="n2">tylko ja 😏</div>
+      <div class="hand n2" id="n2">ja, sama</div>
       <div class="mark strike s3" id="s3"><svg class="strike" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M2 56 C 30 44, 70 64, 98 50"/></svg></div>
-      <div class="hand n3" id="n3">w naturze</div>
-      <div class="stamp st2" id="st2">Umowa stoi?</div>
-      <div class="note" id="note"><small>Odpowiedź</small>Zgłoszenie przyjęte. Rozpatrzę po okazaniu starań. 😘</div>
+      <div class="hand n3" id="n3">odpracuję</div>
+      <div class="stamp st2" id="st2">Wchodzisz?</div>
+      <div class="note" id="note"><small>Komisja</small>Okres próbny przyjęty. Gwarancji brak. Postaraj się, komisja ocenia surowo i osobiście. 😘</div>
     </div>
 
     <div class="side" id="side">
@@ -129,7 +129,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     </div>
 
     <div class="ui" id="ui">
-      <button class="btn" id="accept" type="button">Potwierdzam ofertę</button>
+      <button class="btn" id="accept" type="button">Biorę. Bez Sosnowca</button>
       <button class="btn ghost" id="replay" type="button">Od nowa</button>
     </div>
   </div>
@@ -174,7 +174,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     ids.forEach(function(id){$(id).classList.remove('on')});
     cameo.classList.remove('on');cameo.classList.remove('alt');bubble.classList.remove('on');ui.classList.remove('on');$('note').classList.remove('on');
     try{klip2.pause();klip2.currentTime=0;klip2.muted=true}catch(e){}
-    st2.textContent='Umowa stoi?';$('accept').hidden=false;
+    st2.textContent='Wchodzisz?';$('accept').hidden=false;
     bd.style.backgroundImage='url('+q.getAttribute('src')+')';
     try{klip.pause();klip.currentTime=0}catch(e){}
   }
@@ -185,14 +185,14 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     stage.classList.add('won');bd.style.backgroundImage='url('+p.getAttribute('src')+')';
     // Then the negotiator walks in and disputes the prize.
     at(1300,function(){cameo.classList.add('on');play();klip.loop=true});
-    at(2000,function(){say('Sosnowiec? <em>Żartowałam.</em> Prawdziwą nagrodę wręczę osobiście.')});
+    at(2000,function(){say('Sosnowiec odwołany. Wycieczka będzie, ale <em>u mnie</em>. Zwiedzanie nocne.')});
     at(3300,function(){on('xs')});
     at(3900,function(){on('st1')});
-    at(4800,function(){say('Pomożesz mi, a ja się odwdzięczę. <em>Po swojemu.</em> Poprawiam warunki.')});
+    at(4800,function(){say('Skreślam. Pomożesz mi, a ja <em>odpracuję</em> to osobiście. Każdą godzinę.')});
     at(5700,function(){on('s1')});at(6000,function(){on('n1')});
     at(6600,function(){on('s2')});at(6900,function(){on('n2')});
     at(7500,function(){on('s3')});at(7800,function(){on('n3')});
-    at(8000,function(){say('Odwdzięczę się <em>w naturze</em>, tylko ja i ty. Szczegóły na osobności. 😏')});
+    at(8000,function(){say('Nowe warunki: ty, ja i zamknięte drzwi. Reszta to <em>moja działka</em>. 😏')});
     at(9600,function(){on('st2')});
     at(10300,function(){ui.classList.add('on')});
   }
@@ -202,8 +202,8 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     $('accept').hidden=true;
     if(hasAlt){try{klip2.currentTime=0;klip2.muted=false;var r2=klip2.play();if(r2&&r2.catch)r2.catch(function(){klip2.muted=true;try{klip2.play().catch(function(){})}catch(e){}})}catch(e){}cameo.classList.add('alt')}
     st2.classList.remove('on');
-    setTimeout(function(){st2.textContent='Do rozpatrzenia';st2.classList.add('on')},reduce?0:60);
-    say('Potwierdzam. I <em>będę się starać.</em> 😘');
+    setTimeout(function(){st2.textContent='Okres próbny';st2.classList.add('on')},reduce?0:60);
+    say('Przybijam. Postaram się tak, że <em>odwołasz</em> wszystkie inne plany. 😘');
     setTimeout(function(){$('note').classList.add('on')},reduce?0:700);
   });
   $('replay').addEventListener('click',reset);

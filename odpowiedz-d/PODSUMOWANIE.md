@@ -4,13 +4,14 @@ Data: 2026-10-01
 
 ## Co powstało
 
-1. **Artefakt na jej szkielecie** (wersja 8, link bez zmian):
+1. **Artefakt na jej szkielecie** (wersja 10, link bez zmian):
    https://claude.ai/artifact/RGy4oAaxw6AY41cgrgmzoi
    - jej quiz odtworzony 1:1: ten sam układ (rozmyte tło, plakat 2:3, neonowe obwódki), te same dwa plakaty pobrane z jej artefaktu (`images/question.png`, `images/prize.png`), te same klikalne pigułki A/B/C,
    - kliknięcie dowolnej odpowiedzi pokazuje jej nagrodę "Wygrałeś! Wycieczkę do Sosnowca" dokładnie jak u niej,
-   - dopiero wtedy wchodzi awatar, który jest nią: sama wycofuje swoją nagrodę (czerwony X markerem przez "SOSNOWCA", pieczątka "Zmiana nagrody") i poprawia własną kartę: termin "wczoraj" na "na osobności", osoba towarzysząca "Ty i twoje osobowości" na "tylko ja 😏", koszt "0 zł" na "w naturze",
-   - jej dymki: "Sosnowiec? Żartowałam. Prawdziwą nagrodę wręczę osobiście." / "Pomożesz mi, a ja się odwdzięczę. Po swojemu. Poprawiam warunki." / "Odwdzięczę się w naturze, tylko ja i ty. Szczegóły na osobności. 😏",
-   - pieczątka "Umowa stoi?" i przycisk "Potwierdzam ofertę"; po kliknięciu ramka przechodzi na drugi klip (Twój, wygenerowany w Wan 3 poza sesją: flirt spojrzeniem i gestem, w ubraniu; 720x720, 5 s, z dźwiękiem włączanym automatycznie po kliknięciu, zapętlony), ona mówi "Potwierdzam. I będę się starać. 😘", pieczątka zmienia się na "Do rozpatrzenia", a na plakacie pojawia się Twoja karteczka "Odpowiedź: Zgłoszenie przyjęte. Rozpatrzę po okazaniu starań. 😘"; przycisk "Od nowa" wraca do pierwszego klipu,
+   - dopiero wtedy wchodzi awatar, który jest nią: czerwony X markerem przez "SOSNOWCA", pieczątka "Wycieczka odwołana", a na jej karcie skreślenia i dopiski jej ręką: termin "wczoraj" na "dziś, po 22", osoba towarzysząca "Ty i twoje osobowości" na "ja, sama", koszt "0 zł" na "odpracuję",
+   - jej dymki: "Sosnowiec odwołany. Wycieczka będzie, ale u mnie. Zwiedzanie nocne." / "Skreślam. Pomożesz mi, a ja odpracuję to osobiście. Każdą godzinę." / "Nowe warunki: ty, ja i zamknięte drzwi. Reszta to moja działka. 😏",
+   - pieczątka "Wchodzisz?" i przycisk "Biorę. Bez Sosnowca"; po kliknięciu ramka przechodzi na drugi klip (Twój, wygenerowany w Wan 3 poza sesją: flirt spojrzeniem i gestem, w ubraniu; 720x720, 5 s, z dźwiękiem włączanym automatycznie, zapętlony), ona mówi "Przybijam. Postaram się tak, że odwołasz wszystkie inne plany. 😘", pieczątka zmienia się na "Okres próbny", a na plakacie pojawia się Twoja karteczka "Komisja: Okres próbny przyjęty. Gwarancji brak. Postaraj się, komisja ocenia surowo i osobiście. 😘"; przycisk "Od nowa" wraca do pierwszego klipu,
+   - teksty dopracował subagent na podstawie kontekstu (motyw: jej wycieczka odwołana i przepisana na wycieczkę do niej, zapłata przechodzi na odpracowanie); odrzucone alternatywy: dymek 3 "Rachunek wystawię rano. W naturze, po kursie z wczoraj. 😏", koszt "noc, bez VAT", karteczka "Zanotowane. Nic nie obiecuję. Staraj się, oceniam po całości, nie po zapowiedziach. 😘",
    - na szerokich ekranach postać stoi obok plakatu, na telefonie siedzi w jego lewym dolnym rogu,
    - źródło: `odpowiedz-d/index.html`; kopie jej plakatów w `odpowiedz-d/images/`.
 

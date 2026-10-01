@@ -61,6 +61,8 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
 .cameo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:opacity .6s ease}
 .cameo #klip2{object-position:center;opacity:0}
 .cameo #klip3{object-position:top;opacity:0}
+.cameo #klip.idle{animation:breathe2 4.5s ease-in-out infinite;transform-origin:50% 30%}
+@keyframes breathe2{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.035) translateY(-.6%)}}
 .cameo.alt #klip{opacity:0}
 .cameo.alt #klip2{opacity:1}
 .cameo.alt2 #klip2{opacity:0}
@@ -100,7 +102,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
   .side{display:contents}
 }
 @media (prefers-reduced-motion:reduce){
-  .opt,.ring rect,.prize,.stage.won .ask,.cameo,.bubble,.ui{animation:none;transition:none}
+  .opt,.ring rect,.prize,.stage.won .ask,.cameo,.bubble,.ui,.cameo #klip.idle{animation:none;transition:none}
   .mark.on svg path{animation:none;stroke-dashoffset:0}
   .hand.on,.stamp.on{animation:none;opacity:1;transform:rotate(-3deg)}
   .stamp.on{transform:rotate(-12deg)}
@@ -181,6 +183,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
   var stage=$('stage'),bd=$('bd'),q=$('q'),p=$('p'),klip=$('klip'),klip2=$('klip2'),klip3=$('klip3'),cameo=$('cameo'),bubble=$('bubble'),ui=$('ui');
   var hasAlt=true;klip2.addEventListener('error',function(){hasAlt=false});
   var hasAlt2=true;klip3.addEventListener('error',function(){hasAlt2=false});
+  klip.addEventListener('ended',function(){klip.classList.add('idle')});
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var timers=[],won=false;
   var ids=['xs','st1','s1','n1','s2','n2','s3','n3'];
@@ -200,6 +203,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     try{klip3.pause();klip3.currentTime=0}catch(e){}
     bd.style.backgroundImage='url('+q.getAttribute('src')+')';
     try{klip.pause();klip.currentTime=0}catch(e){}
+    klip.classList.remove('idle');
   }
 
   // Her quiz plays exactly as she built it: any answer wins the Sosnowiec trip.
@@ -245,7 +249,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     try{klip3.currentTime=0;var r3=klip3.play();if(r3&&r3.catch)r3.catch(function(){})}catch(e){}
     cameo.classList.add('alt2');
     try{klip2.pause()}catch(e){}
-    setTimeout(function(){say('Żart, <em>więcej na żywo</em>…')},reduce?0:900);
+    setTimeout(function(){say('Żartowałam, <em>więcej na żywo</em>…')},reduce?0:900);
     setTimeout(function(){$('replay').hidden=false},reduce?0:2500);
   });
 

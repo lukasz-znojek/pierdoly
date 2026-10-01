@@ -49,14 +49,11 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
 .hand.n2{left:58%;top:79.4%;font-size:3cqw}
 .hand.n3{left:58%;top:89.6%;font-size:3.4cqw}
 
-.stamp{position:absolute;font-family:var(--font-stamp);font-weight:800;letter-spacing:.14em;text-transform:uppercase;text-align:center;color:var(--marker);border:.55cqw double var(--marker);border-radius:1.2cqw;padding:.9cqw 1.6cqw;font-size:4cqw;line-height:1.1;opacity:0;transform:rotate(-12deg) scale(1.6);mix-blend-mode:multiply;background:rgba(255,255,255,.08);white-space:nowrap}
+.stamp{position:absolute;font-family:var(--font-stamp);font-weight:800;letter-spacing:.14em;text-transform:uppercase;text-align:center;color:var(--marker);border:.55cqw double var(--marker);border-radius:1.2cqw;padding:.9cqw 1.6cqw;font-size:4cqw;line-height:1.1;opacity:0;transform:rotate(-12deg) scale(1.6);background:rgba(246,236,216,.9);box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.35);white-space:nowrap}
 .stamp small{display:block;font-size:2.4cqw;letter-spacing:.2em}
 .stamp.on{animation:stampIn .35s cubic-bezier(.2,1.5,.4,1) forwards}
 .stamp.st1{left:19%;top:33.5%}
-.note{position:absolute;left:4%;top:47.5%;width:44%;background:rgba(246,236,216,.94);color:#1a0f12;font-family:var(--font-marker);font-size:2.8cqw;line-height:1.15;padding:1.2cqw 1.6cqw;border-radius:.8cqw;box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.35);transform:rotate(-2deg);opacity:0;transition:opacity .4s ease}
-.note small{display:block;font-family:var(--font-stamp);font-size:1.9cqw;letter-spacing:.2em;text-transform:uppercase;color:#8a5a00;margin-bottom:.4cqw}
-.note.on{opacity:1}
-.stamp.st2{left:50%;top:54%;mix-blend-mode:normal;background:rgba(246,236,216,.88);box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.35)}
+.stamp.st2{left:50%;top:54%}
 @keyframes stampIn{to{opacity:1;transform:rotate(-12deg) scale(1)}}
 
 /* ---- the negotiator ---- */
@@ -66,7 +63,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
 .cameo #klip2{object-position:center;opacity:0}
 .cameo.alt #klip{opacity:0}
 .cameo.alt #klip2{opacity:1}
-.bubble{position:absolute;left:3%;top:56%;width:50%;z-index:3;background:var(--paper);color:var(--ink);font-family:var(--font-marker);font-size:3cqw;line-height:1.15;padding:1.4cqw 1.8cqw;border-radius:2cqw;border-bottom-left-radius:.4cqw;box-shadow:0 .8cqw 2cqw rgba(0,0,0,.45);opacity:0;transform:translateY(8%);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+.bubble{position:absolute;left:3%;bottom:36.5%;width:52%;z-index:3;background:var(--paper);color:var(--ink);font-family:var(--font-marker);font-size:2.9cqw;line-height:1.15;padding:1.4cqw 1.8cqw;border-radius:2cqw;border-bottom-left-radius:.4cqw;box-shadow:0 .8cqw 2cqw rgba(0,0,0,.45);opacity:0;transform:translateY(8%);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
 .bubble::after{content:"";position:absolute;left:2cqw;bottom:-1.1cqw;width:2.4cqw;height:2.4cqw;background:var(--paper);transform:skewX(25deg) rotate(-12deg)}
 .bubble.on{opacity:1;transform:none}
 .bubble em{font-style:normal;color:var(--marker)}
@@ -117,13 +114,12 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
       <div class="mark strike s3" id="s3"><svg class="strike" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M2 56 C 30 44, 70 64, 98 50"/></svg></div>
       <div class="hand n3" id="n3">odpracuję</div>
       <div class="stamp st2" id="st2">Wchodzisz?</div>
-      <div class="note" id="note"><small>Komisja</small>Okres próbny przyjęty. Gwarancji brak. Postaraj się, komisja ocenia surowo i osobiście. 😘</div>
     </div>
 
     <div class="side" id="side">
       <div class="cameo" id="cameo">
         <video id="klip" src="media/klip.mp4" poster="media/postac.png" muted playsinline preload="auto"></video>
-        <video id="klip2" src="media/klip2.mp4" muted playsinline preload="auto" loop></video>
+        <video id="klip2" src="media/klip2.mp4" poster="media/postac2.png" muted playsinline preload="auto" loop></video>
       </div>
       <div class="bubble" id="bubble"></div>
     </div>
@@ -172,9 +168,9 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     timers.forEach(clearTimeout);timers=[];won=false;
     stage.classList.remove('won');
     ids.forEach(function(id){$(id).classList.remove('on')});
-    cameo.classList.remove('on');cameo.classList.remove('alt');bubble.classList.remove('on');ui.classList.remove('on');$('note').classList.remove('on');
+    cameo.classList.remove('on');cameo.classList.remove('alt');bubble.classList.remove('on');ui.classList.remove('on');
     try{klip2.pause();klip2.currentTime=0;klip2.muted=true}catch(e){}
-    st2.textContent='Wchodzisz?';$('accept').hidden=false;
+    st2.innerHTML='Wchodzisz?';$('accept').hidden=false;
     bd.style.backgroundImage='url('+q.getAttribute('src')+')';
     try{klip.pause();klip.currentTime=0}catch(e){}
   }
@@ -185,16 +181,15 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     stage.classList.add('won');bd.style.backgroundImage='url('+p.getAttribute('src')+')';
     // Then the negotiator walks in and disputes the prize.
     at(1300,function(){cameo.classList.add('on');play();klip.loop=true});
-    at(2000,function(){say('Sosnowiec odwołany. Wycieczka będzie, ale <em>u mnie</em>. Zwiedzanie nocne.')});
+    at(2000,function(){say('Sosnowiec odwołany. Wycieczka będzie, ale <em>u mnie</em>.')});
     at(3800,function(){on('xs')});
     at(4600,function(){on('st1')});
-    at(7600,function(){say('Skreślam. Pomożesz mi, a ja <em>odpracuję</em> to osobiście. Każdą godzinę.')});
-    at(9000,function(){on('s1')});at(9400,function(){on('n1')});
-    at(10600,function(){on('s2')});at(11000,function(){on('n2')});
-    at(12200,function(){on('s3')});at(12600,function(){on('n3')});
-    at(13600,function(){say('Nowe warunki: ty, ja i zamknięte drzwi. Reszta to <em>moja działka</em>. 😏')});
-    at(16400,function(){on('st2')});
-    at(17200,function(){ui.classList.add('on')});
+    at(7000,function(){on('s1')});at(7400,function(){on('n1')});
+    at(8600,function(){on('s2')});at(9000,function(){on('n2')});
+    at(10200,function(){on('s3')});at(10600,function(){on('n3')});
+    at(11800,function(){say('Ty, ja i zamknięte drzwi. Reszta to <em>moja działka</em>. 😏')});
+    at(14000,function(){on('st2')});
+    at(14800,function(){ui.classList.add('on')});
   }
 
   ['optA','optB','optC'].forEach(function(id){$(id).addEventListener('click',win)});
@@ -202,9 +197,8 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     $('accept').hidden=true;
     if(hasAlt){try{klip2.currentTime=0;klip2.muted=false;var r2=klip2.play();if(r2&&r2.catch)r2.catch(function(){klip2.muted=true;try{klip2.play().catch(function(){})}catch(e){}})}catch(e){}cameo.classList.add('alt')}
     st2.classList.remove('on');
-    setTimeout(function(){st2.textContent='Okres próbny';st2.classList.add('on')},reduce?0:60);
-    say('Przybijam. Postaram się tak, że <em>odwołasz</em> wszystkie inne plany. 😘');
-    setTimeout(function(){$('note').classList.add('on')},reduce?0:700);
+    setTimeout(function(){st2.innerHTML='<small>Gwarancji brak</small>Okres próbny';st2.classList.add('on')},reduce?0:60);
+    say('Przybijam. <em>Odwołasz</em> inne plany. 😘');
   });
   $('replay').addEventListener('click',reset);
 

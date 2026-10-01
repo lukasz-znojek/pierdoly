@@ -134,6 +134,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
         <video id="klip" src="media/klip.mp4" poster="media/postac.png" muted playsinline preload="auto"></video>
         <video id="klip2" src="media/klip2.mp4" poster="media/postac2.png" muted playsinline preload="auto" loop></video>
         <video id="klip3" src="media/klip3.mp4" poster="media/postac3.png" muted playsinline preload="auto" loop></video>
+        <audio id="muzyka" src="media/muzyka.m4a" loop preload="auto"></audio>
       </div>
       <div class="bubble" id="bubble"></div>
     </div>
@@ -199,6 +200,7 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     ids.forEach(function(id){$(id).classList.remove('on')});
     cameo.classList.remove('on');cameo.classList.remove('alt');bubble.classList.remove('on');ui.classList.remove('on');
     try{klip2.pause();klip2.currentTime=0;klip2.muted=true}catch(e){}
+    try{var mz=$('muzyka');mz.pause();mz.currentTime=0}catch(e){}
     $('accept').hidden=false;$('bonus').hidden=true;$('replay').hidden=true;cameo.classList.remove('alt2');$('gate').classList.remove('on');
     try{klip3.pause();klip3.currentTime=0}catch(e){}
     bd.style.backgroundImage='url('+q.getAttribute('src')+')';
@@ -229,7 +231,9 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
       setTimeout(function(){say('Chcesz zobaczyć <em>więcej</em>? 😏')},reduce?0:3600);
       setTimeout(function(){$('bonus').hidden=false},reduce?0:4600);
     }
-    if(hasAlt){try{klip2.currentTime=0;klip2.muted=false;var r2=klip2.play();if(r2&&r2.catch)r2.catch(function(){klip2.muted=true;try{klip2.play().catch(function(){})}catch(e){}})}catch(e){}cameo.classList.add('alt')}
+    if(hasAlt){try{klip2.currentTime=0;klip2.muted=true;var r2=klip2.play();if(r2&&r2.catch)r2.catch(function(){})}catch(e){}cameo.classList.add('alt')}
+    // Music starts here and keeps looping until "Od nowa", whichever clip is on screen.
+    try{var m=$('muzyka');m.currentTime=0;var rm=m.play();if(rm&&rm.catch)rm.catch(function(){})}catch(e){}
     say('Tym razem <em>nie pożałujesz</em>. 😘');
   });
   // Bonus: an age gate first, then the clip with the punchline stamp.

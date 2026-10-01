@@ -196,7 +196,6 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
     $('accept').hidden=true;
     if(hasAlt){try{klip2.currentTime=0;klip2.muted=false;var r2=klip2.play();if(r2&&r2.catch)r2.catch(function(){klip2.muted=true;try{klip2.play().catch(function(){})}catch(e){}})}catch(e){}cameo.classList.add('alt')}
     st2.classList.remove('on');
-    setTimeout(function(){st2.innerHTML='<small>Gwarancji brak</small>Okres próbny';st2.classList.add('on')},reduce?0:60);
     say('Tym razem <em>nie pożałujesz</em>. 😘');
   });
   $('replay').addEventListener('click',reset);

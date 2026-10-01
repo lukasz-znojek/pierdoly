@@ -1,0 +1,274 @@
+<title>Odpowiedź D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,800;1,400&family=Permanent+Marker&display=swap">
+<style>
+/* Layout: her quiz card (paper) on the left, the gothic negotiator on the right; stack on phones. Dark-first, lace and blood on ink. */
+:root {
+  --bg: #16121b;
+  --bg-2: #201a27;
+  --fg: #efe6ea;
+  --muted: #a99aa8;
+  --paper: #f7f1e8;
+  --paper-2: #eee5d8;
+  --ink: #1b1519;
+  --ink-soft: #5a4d57;
+  --blood: #b5132f;
+  --blood-soft: #d94a62;
+  --gold: #d6b25a;
+  --lace: #ffffff;
+  --line: #3a2f3c;
+  --shadow: 0 24px 60px rgba(0,0,0,.55);
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-marker: "Permanent Marker", "Comic Sans MS", cursive;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f1eaf0; --bg-2: #e6dde6; --fg: #1b1519; --muted: #6a5c69;
+    --line: #d7cad6; --shadow: 0 18px 44px rgba(50,20,40,.18);
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f1eaf0; --bg-2: #e6dde6; --fg: #1b1519; --muted: #6a5c69;
+  --line: #d7cad6; --shadow: 0 18px 44px rgba(50,20,40,.18);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+  background-image: radial-gradient(60% 40% at 50% 0%, var(--bg-2), transparent 70%);
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 28px 56px; padding-inline: 16px; }
+.eyebrow {
+  font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--gold); text-align: center; margin: 0 0 10px;
+}
+h1.page-title {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 4.4vw, 40px);
+  line-height: 1.15; text-align: center; margin: 0 0 6px; text-wrap: balance;
+}
+.lede { text-align: center; color: var(--muted); margin: 0 auto 28px; max-width: 46ch; }
+
+.stage { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (min-width: 780px) { .stage { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); } }
+
+/* ---- her quiz, reproduced ---- */
+.quiz {
+  background: var(--paper); color: var(--ink); border-radius: 14px; box-shadow: var(--shadow);
+  padding: 26px 24px 22px; position: relative; min-width: 0;
+  border: 1px solid rgba(0,0,0,.08);
+}
+.quiz::before {
+  content: ""; position: absolute; inset: 8px; border: 1px dashed rgba(27,21,25,.18); border-radius: 9px; pointer-events: none;
+}
+.quiz h2 { font-family: var(--font-body); font-weight: 800; font-size: 22px; margin: 0 0 16px; line-height: 1.25; text-wrap: balance; }
+.opts { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.opt {
+  position: relative; display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: center;
+  padding: 12px 14px; border: 1px solid rgba(27,21,25,.14); border-radius: 10px; background: var(--lace);
+  font-weight: 600; min-width: 0;
+}
+.opt .dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(27,21,25,.35); background: #fff; }
+.opt .letter { color: var(--ink-soft); font-weight: 800; margin-right: 6px; }
+.opt svg.x { position: absolute; inset: -6px; width: calc(100% + 12px); height: calc(100% + 12px); pointer-events: none; }
+.opt svg.x path { fill: none; stroke: var(--blood); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 1400; stroke-dashoffset: 1400; }
+.opt.struck svg.x path { animation: draw .55s cubic-bezier(.3,.8,.3,1) forwards; }
+.opt.struck svg.x path:nth-child(2) { animation-delay: .32s; }
+.opt.struck .label { text-decoration: line-through; text-decoration-color: rgba(27,21,25,.35); color: var(--ink-soft); }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.opt.d {
+  display: none; border: 2px solid var(--blood); background: #fff8f4; transform: rotate(-1.2deg);
+  font-family: var(--font-marker); font-size: 22px; line-height: 1.2; color: var(--blood); font-weight: 400;
+}
+.opt.d .dot { border-color: var(--blood); background: radial-gradient(circle, var(--blood) 0 45%, #fff 48%); }
+.opt.d .letter { color: var(--blood); }
+.quiz.revealed .opt.d { display: grid; animation: pop .45s cubic-bezier(.2,1.4,.4,1) both; animation-delay: .9s; }
+@keyframes pop { from { opacity: 0; transform: rotate(-6deg) scale(.86); } to { opacity: 1; transform: rotate(-1.2deg) scale(1); } }
+
+.prize { margin: 18px 0 0; padding-top: 14px; border-top: 1px solid rgba(27,21,25,.14); color: var(--ink-soft); font-size: 15px; }
+.prize .old { position: relative; display: inline-block; }
+.quiz.revealed .prize .old { text-decoration: line-through; text-decoration-color: var(--blood); text-decoration-thickness: 3px; }
+.prize .new { display: none; font-family: var(--font-marker); color: var(--blood); font-size: 20px; margin-top: 6px; transform: rotate(-.6deg); }
+.quiz.revealed .prize .new { display: block; animation: pop .4s ease-out both; animation-delay: 1.3s; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+button.btn {
+  appearance: none; border: 0; cursor: pointer; font: inherit; font-weight: 800; letter-spacing: .02em;
+  padding: 12px 18px; border-radius: 10px; background: var(--ink); color: var(--paper);
+  box-shadow: 0 6px 0 rgba(27,21,25,.25); transition: transform .08s ease, box-shadow .08s ease;
+}
+button.btn:hover { transform: translateY(1px); box-shadow: 0 5px 0 rgba(27,21,25,.25); }
+button.btn:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(27,21,25,.25); }
+button.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+button.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+button.btn.blood { background: var(--blood); }
+button.btn[hidden] { display: none !important; }
+
+/* ---- the negotiator ---- */
+.her { position: relative; display: grid; gap: 14px; min-width: 0; }
+.frame {
+  position: relative; border-radius: 16px; overflow: hidden; background: var(--bg-2);
+  border: 1px solid var(--line); box-shadow: var(--shadow); aspect-ratio: 9 / 13; max-width: 100%;
+}
+.frame video, .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.frame .fallback {
+  position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px;
+  background: radial-gradient(70% 60% at 50% 30%, #3a1f33, var(--bg-2) 80%);
+}
+.frame .fallback .sigil { font-family: var(--font-display); font-weight: 800; font-size: 64px; color: var(--blood-soft); line-height: 1; }
+.frame .fallback p { margin: 10px 0 0; color: var(--muted); max-width: 26ch; font-size: 14px; }
+.frame .corner { position: absolute; inset: 10px; border: 1px solid rgba(214,178,90,.35); border-radius: 10px; pointer-events: none; }
+
+.bubbles { display: grid; gap: 10px; }
+.bubble {
+  position: relative; background: var(--paper); color: var(--ink); border-radius: 14px; padding: 12px 16px;
+  font-weight: 600; max-width: 42ch; opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease;
+  border-bottom-right-radius: 4px; justify-self: end;
+}
+.bubble::after {
+  content: ""; position: absolute; right: -6px; bottom: 6px; width: 12px; height: 12px; background: var(--paper);
+  transform: skewX(-20deg) rotate(10deg);
+}
+.bubble.on { opacity: 1; transform: none; }
+.bubble.whisper { background: var(--ink); color: var(--paper); font-style: italic; font-weight: 400; }
+.bubble.whisper::after { background: var(--ink); }
+.bubble.whisper em { color: var(--gold); font-style: normal; font-weight: 800; }
+
+.deal { display: none; position: relative; margin-top: 6px; padding: 18px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-2); }
+.deal.on { display: block; }
+.deal p { margin: 0; color: var(--fg); }
+.stamp {
+  position: absolute; right: 14px; top: -16px; transform: rotate(-9deg);
+  font-family: var(--font-display); font-weight: 800; letter-spacing: .12em; font-size: 15px;
+  color: var(--blood-soft); border: 3px double var(--blood-soft); border-radius: 8px; padding: 6px 10px;
+  background: rgba(22,18,27,.75); animation: stampIn .35s cubic-bezier(.2,1.5,.4,1) both;
+}
+@keyframes stampIn { from { opacity: 0; transform: rotate(-20deg) scale(1.6); } to { opacity: 1; transform: rotate(-9deg) scale(1); } }
+
+footer.note { text-align: center; color: var(--muted); font-size: 13px; margin-top: 36px; }
+footer.note a { color: var(--gold); }
+
+@media (prefers-reduced-motion: reduce) {
+  .opt.struck svg.x path { animation: none; stroke-dashoffset: 0; }
+  .quiz.revealed .opt.d, .quiz.revealed .prize .new, .stamp { animation: none; }
+  .bubble { transition: none; }
+}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Odpowiedź na ankietę</p>
+  <h1 class="page-title">Odpowiedź D</h1>
+  <p class="lede">Dostałam Twój quiz. Trzy odpowiedzi, wszystkie „Tak”. Urocze. Dopisałam czwartą.</p>
+
+  <div class="stage">
+    <section class="quiz" id="quiz" aria-label="Quiz">
+      <h2>Która z odpowiedzi jest poprawna? ↪️</h2>
+      <ul class="opts">
+        <li class="opt" id="optA"><span class="dot" aria-hidden="true"></span><span class="label"><span class="letter">A:</span>Tak.</span>
+          <svg class="x" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M12 8 L388 52"/><path d="M388 8 L12 52"/></svg></li>
+        <li class="opt" id="optB"><span class="dot" aria-hidden="true"></span><span class="label"><span class="letter">B:</span>Tak.</span>
+          <svg class="x" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M12 8 L388 52"/><path d="M388 8 L12 52"/></svg></li>
+        <li class="opt" id="optC"><span class="dot" aria-hidden="true"></span><span class="label"><span class="letter">C:</span>Wszystkie powyższe.</span>
+          <svg class="x" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M12 8 L388 52"/><path d="M388 8 L12 52"/></svg></li>
+        <li class="opt d" id="optD"><span class="dot" aria-hidden="true"></span><span class="label"><span class="letter">D:</span>Tak… ale za coś.</span></li>
+      </ul>
+      <div class="prize">
+        <div class="old">Nagroda: Wycieczkę do Sosnowca.</div>
+        <div class="new">Sosnowiec zostaw sobie. Zapłata: w naturze.</div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="reveal" type="button">Sprawdź moją odpowiedź</button>
+        <button class="btn blood" id="accept" type="button" hidden>Przyjmuję warunki</button>
+        <button class="btn ghost" id="replay" type="button" hidden>Od nowa</button>
+      </div>
+    </section>
+
+    <aside class="her" aria-label="Negocjatorka">
+      <div class="frame">
+        <div class="fallback" id="fallback">
+          <div>
+            <div class="sigil">D</div>
+            <p>Tu wchodzi ona. Klip ładuje się, kiedy jest podpięty.</p>
+          </div>
+        </div>
+        <img id="still" src="media/postac.png" alt="Gotycka blondynka w stylu anime, z markerem w dłoni, uśmiecha się półgębkiem" hidden>
+        <video id="klip" src="media/klip.mp4" poster="media/postac.png" muted loop playsinline preload="metadata" hidden></video>
+        <div class="corner" aria-hidden="true"></div>
+      </div>
+      <div class="bubbles" id="bubbles" aria-live="polite">
+        <div class="bubble">Pomogę. Oczywiście, że pomogę.</div>
+        <div class="bubble">Ale Sosnowiec to nie jest waluta.</div>
+        <div class="bubble whisper">Rozliczymy się <em>w naturze</em>.</div>
+        <div class="bubble whisper">Szczegóły ustalimy na osobności. Ciastko to tylko zaliczka. 😏</div>
+      </div>
+      <div class="deal" id="deal">
+        <div class="stamp">Umowa stoi</div>
+        <p>Masz to na piśmie. Ja też. Termin odbioru podam osobiście.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="note">Odpowiedź udzielona z pełną premedytacją. Reklamacji nie przyjmuję, zaliczek owszem.</footer>
+</div>
+
+<script>
+(function () {
+  var quiz = document.getElementById('quiz');
+  var reveal = document.getElementById('reveal');
+  var accept = document.getElementById('accept');
+  var replay = document.getElementById('replay');
+  var deal = document.getElementById('deal');
+  var bubbles = Array.prototype.slice.call(document.querySelectorAll('#bubbles .bubble'));
+  var still = document.getElementById('still');
+  var klip = document.getElementById('klip');
+  var fallback = document.getElementById('fallback');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [];
+
+  // Media: prefer the clip, then the still, then the typographic fallback.
+  function showStill() {
+    var probe = new Image();
+    probe.onload = function () { still.hidden = false; fallback.hidden = true; };
+    probe.onerror = function () { still.hidden = true; };
+    probe.src = still.getAttribute('src');
+  }
+  klip.addEventListener('loadeddata', function () { klip.hidden = false; still.hidden = true; fallback.hidden = true; });
+  klip.addEventListener('error', function () { klip.hidden = true; showStill(); });
+  showStill();
+  klip.load();
+
+  function later(fn, ms) { timers.push(setTimeout(fn, reduce ? 0 : ms)); }
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+  reveal.addEventListener('click', function () {
+    reveal.hidden = true;
+    ['optA', 'optB', 'optC'].forEach(function (id, i) {
+      later(function () { document.getElementById(id).classList.add('struck'); }, i * 260);
+    });
+    later(function () { quiz.classList.add('revealed'); }, 0);
+    if (!klip.hidden) { try { var p = klip.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
+    bubbles.forEach(function (b, i) { later(function () { b.classList.add('on'); }, 1500 + i * 1400); });
+    later(function () { accept.hidden = false; }, 1500 + bubbles.length * 1400);
+  });
+
+  accept.addEventListener('click', function () {
+    accept.hidden = true;
+    deal.classList.add('on');
+    replay.hidden = false;
+  });
+
+  replay.addEventListener('click', function () {
+    clearTimers();
+    quiz.classList.remove('revealed');
+    ['optA', 'optB', 'optC'].forEach(function (id) { document.getElementById(id).classList.remove('struck'); });
+    bubbles.forEach(function (b) { b.classList.remove('on'); });
+    deal.classList.remove('on');
+    replay.hidden = true; accept.hidden = true; reveal.hidden = false;
+    try { klip.pause(); klip.currentTime = 0; } catch (e) {}
+  });
+})();
+</script>

@@ -191,8 +191,8 @@ svg.x path,svg.strike path{fill:none;stroke:var(--marker);stroke-linecap:round;s
   $('accept').addEventListener('click',function(){
     $('accept').hidden=true;
     st2.classList.remove('on');
-    setTimeout(function(){st2.textContent='Umowa stoi';st2.classList.add('on')},reduce?0:60);
-    say('Masz to na piśmie. <em>Ja też.</em> Termin odbioru podam osobiście.');
+    setTimeout(function(){st2.textContent='Do rozpatrzenia';st2.classList.add('on')},reduce?0:60);
+    say('Ładnie. Ale to dopiero <em>podanie</em>, nie umowa. Teraz zacznij się starać, a ja popatrzę. 😘');
   });
   $('replay').addEventListener('click',reset);
 
